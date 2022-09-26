@@ -1,0 +1,86 @@
+const Joi = require("joi");
+
+const userSchema = Joi.array().items(Joi.object({
+    userID: Joi.number().required(),
+    name: Joi.string().required(),
+    photoUrl: Joi.string(),
+    email: Joi.string().required(),
+    roles: Joi.array(),
+    dateInserted: Joi.string(),
+    dateLastActive: Joi.string().allow(null),
+    dateUpdated: Joi.string().allow(null),
+    points: Joi.number(),
+    dateInserted: Joi.string(),
+    emailConfirmed: Joi.boolean(),
+    bypassSpam: Joi.boolean(),
+    banned: Joi.number(),
+    rank: Joi.object(),
+    profilePhotoUrl: Joi.string(),
+    countDiscussions: Joi.number(),
+    countComments: Joi.number(),
+    countPosts: Joi.number(),
+    label: Joi.string().allow(''),
+    private: Joi.boolean(),
+    rankID: Joi.number().allow(null),
+    url: Joi.string(),
+    showEmail: Joi.boolean(),
+}
+));
+
+const commentSchema = Joi.array().items(Joi.object({
+    commentID: Joi.number().required(),
+    discussionID: Joi.number().required(),
+    name: Joi.string().required(),
+    categoryID: Joi.number().required(),
+    body: Joi.string().required(),
+    dateInserted: Joi.string(),
+    dateUpdated: Joi.string().allow(null),
+    insertUserID: Joi.any().required(),
+    updateUserID: Joi.number().allow(null),
+    score: Joi.number().allow(null),
+    url: Joi.string(),
+    type: Joi.string(),
+    image: Joi.object().allow(null).allow(''),
+    format: Joi.string(),
+    attributes: Joi.object()
+}));
+
+const discussionSchema = Joi.array().items(Joi.object({
+    discussionID: Joi.number().required(),
+    type: Joi.string(),
+    name: Joi.string().required(),
+    body: Joi.string().required(),
+    categoryID: Joi.number().required(),
+    dateInserted: Joi.string(),
+    dateLastComment: Joi.string().allow(null),
+    dateUpdated: Joi.string().allow(null),
+    insertUserID: Joi.number().required(),
+    insertUser: Joi.object().required(),
+    updateUserID: Joi.number().allow(null),
+    lastUserID: Joi.number(),
+    lastUser: Joi.object(),
+    pinned: Joi.boolean(),
+    pinLocation: Joi.string().allow(null),
+    closed: Joi.boolean(),
+    sink: Joi.boolean(),
+    countComments: Joi.number(),
+    countViews: Joi.number(),
+    countViews: Joi.number(),
+    hot: Joi.number(),
+    url: Joi.string(),
+    canonicalUrl: Joi.string(),
+    format: Joi.string(),
+    statusID: Joi.number(),
+    showEmail: Joi.boolean(),
+    attributes: Joi.object(),
+    internalStatusID: Joi.number(),
+    bookmarked: Joi.boolean(),
+    unread: Joi.boolean(),
+    resolved: Joi.boolean(),
+    score: Joi.number().allow(null),
+    image: Joi.object().allow(null),
+    countUnread: Joi.number()
+}
+));
+
+module.exports = {userSchema , commentSchema, discussionSchema}
