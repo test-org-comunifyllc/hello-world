@@ -26,7 +26,7 @@ app.get('/',(req,res) =>{
             res.json(result.records);
         }
     })
-    res.send('Salesforce')
+    // res.send('Salesforce')
 });
 
 app.listen(PORT,() => {
